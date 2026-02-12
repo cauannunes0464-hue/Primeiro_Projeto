@@ -20,7 +20,6 @@ Dictionary < int, (string Nome,decimal Preco, string Descricao)> cardapio1 = new
 List<(string Nome, decimal Preco, string Descricao)> pedidos = new List<(string Nome, decimal Preco, string Descricao)>();
 
 
-
 void ExibirTitulo()
 {
     Console.WriteLine(@"             
@@ -99,7 +98,6 @@ void Cardapio_Pedido()
             Console.WriteLine($"                                       {item.Key} - {item.Value.Nome} - R$ {item.Value.Preco:F2}\n");
         }
 
-
         Console.Write("\n                                                    Faça o seu pedido: ");
         string entradaPedido = Console.ReadLine()!;
 
@@ -133,7 +131,6 @@ void Cardapio_Pedido()
                 Console.WriteLine($"                                         {pedido.Nome} - R$ {pedido.Preco:F2}\n");
             }
 
-            
             Console.Write("\n                                        Deseja adicionar mais um item em seu carrinho? ");
             string escolhaSimOuNao = Console.ReadLine()!.Trim().ToLower();                                                       // To.Lower serve para padronizar qualquer tipo de string na entrada para minusculo 
             if (!escolhaSimOuNao.All(char.IsLetter))
@@ -195,15 +192,8 @@ void Endereco()
     string entradaBairro= Console.ReadLine()!;
 
     Thread.Sleep(1000);
-
     Pagamento();
-
-
-
 }
-
-
-
 
 void Pagamento()
 {
@@ -289,7 +279,6 @@ void Pagamento()
     }
 }
 
-
 void Avaliar()
 
 {
@@ -361,7 +350,6 @@ void Avaliar()
                 Console.Clear();
                 ExibirTitulo();
                 break;
-
         }
     }
 
