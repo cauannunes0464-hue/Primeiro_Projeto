@@ -7,6 +7,8 @@ using System.Linq.Expressions;
 using System.Runtime.Intrinsics.X86;
 using System.Threading;
 using System.Linq;
+using System.Collections.Concurrent;
+using System.Threading.Channels;
 
 string mensagem = "\n                                 Boas Vindas a Hamburgueria mais famosa do Brasi!\n";
 
@@ -107,12 +109,11 @@ void Cardapio_Pedido()
 
         Console.Write("                                                    Faça o seu pedido: ");
         string entradaPedido = Console.ReadLine()!;
-        
+
         if (!int.TryParse(entradaPedido, out int opcao) || opcao < 0)
         {
             Console.WriteLine("\n                                                       Opção errada!");
             Thread.Sleep(2000);
-            
             continue;
         }
 
@@ -125,69 +126,141 @@ void Cardapio_Pedido()
             continue;
         }
 
-        string escolhido = cardapio1[indice];
-        pedidos.Add(escolhido);
-
-        Console.Clear();
-        Thread.Sleep(2000);
-        ExibiTitulo();
-        Thread.Sleep(200);
-
-        foreach (string pedido in pedidos)
+        if (indice >= 0 && indice < cardapio1.Count)
         {
-            Console.WriteLine($"           \n {pedido}");
-        }
+            string escolhido = cardapio1[indice];
+            pedidos.Add(escolhido);
 
-        Console.Write("\n                                        Deseja adicionar mais um item em seu carrinho? ");
-        string escolhaSimOuNao = Console.ReadLine()!.ToLower();                                                       // To.Lower serve para padronizar qualquer tipo de string na entrada para minusculo 
-
-        if (!escolhaSimOuNao.All(char.IsLetter))
-        { 
-            Thread.Sleep(1500);
-            Console.WriteLine("\n\n                                              Digite apenas letras.");
-            Thread.Sleep(1000);
-        }
-
-        else if (escolhaSimOuNao != "sim" && escolhaSimOuNao != "não" && escolhaSimOuNao != "nao")
-        {
-            Console.WriteLine("\n\n                                                Resposta inválida.");
-            Thread.Sleep(1000);
-        }
-
-        else if (escolhaSimOuNao == "não" || escolhaSimOuNao == "nao")
-        {
-            Thread.Sleep(1500);
             Console.Clear();
             ExibiTitulo();
 
-            Console.WriteLine("                                                 Seu carinho: ");
-                
             foreach (string pedido in pedidos)
             {
-                Console.WriteLine($"                            \n{pedido}");
+                Console.WriteLine($"           \n {pedido}");
             }
 
-            Thread.Sleep(500);
-            Console.WriteLine("\n\n                      Estamos te direcionando para etapa de preencimento de endereço....");
-            Thread.Sleep(1500);
-            endereco();
-            break;
-        }
+            Console.Write("\n                                        Deseja adicionar mais um item em seu carrinho? ");
+            string escolhaSimOuNao = Console.ReadLine()!.ToLower();                                                       // To.Lower serve para padronizar qualquer tipo de string na entrada para minusculo 
+            if (!escolhaSimOuNao.All(char.IsLetter))
+            {
+                Console.WriteLine("\n\n                                              Digite apenas letras.");
+                Thread.Sleep(1500);
+                continue;
+            }
 
-        else
-        {
-            continue;
-        }   
+            else if (escolhaSimOuNao != "sim" && escolhaSimOuNao != "não" && escolhaSimOuNao != "nao")
+            {
+                Console.WriteLine("\n\n                                                Resposta inválida.");
+                Thread.Sleep(1500);
+                continue;
+            }
+
+
+            else if (escolhaSimOuNao == "não" || escolhaSimOuNao == "nao")
+            {
+                Thread.Sleep(1500);
+                Console.Clear();
+                ExibiTitulo();
+
+                Console.WriteLine("                                                 Seu carinho: ");
+
+                foreach (string pedido in pedidos)
+                {
+                    Console.WriteLine($"                            \n{pedido}");
+                }
+
+                Thread.Sleep(500);
+                Console.WriteLine("\n\n                               Estamos te direcionando para etapa de preencimento de endereço...");
+                Thread.Sleep(1500);
+                endereco();
+                break;
+            }
+        }
     }
 }
 
 
+void endereco()
+{
+    Console.WriteLine("\n\n                                                             Deu certo");
+}
+
 void avaliar()
 
 {
-    Console.WriteLine();
-}
+    int gurdaAvaliacao = 0;
+    int opcaoEscolhidaNumericAvalia;
 
+    while (true)
+    {
+        Console.Clear();
+        ExibiTitulo();
+        Console.WriteLine("                                  Como você considera sua experiencia com o sistema?\n");
+
+        Console.WriteLine("                                                        1- Ruim");
+        Console.WriteLine("                                                        2- Regular");
+        Console.WriteLine("                                                        3- Bom");
+        Console.WriteLine("                                                        4- Muito Bom");
+        Console.WriteLine("                                                        5- Excelente\n");
+        string entradaAvalia = Console.ReadLine()!;
+
+        if (!int.TryParse(entradaAvalia, out opcaoEscolhidaNumericAvalia) || opcaoEscolhidaNumericAvalia < 0)
+        {
+            Console.WriteLine("\n                                                    Opção invalida!\n\n\n");
+            Thread.Sleep(2000);
+            Console.Clear();
+            ExibiTitulo();
+            continue;
+        }
+
+        switch (opcaoEscolhidaNumericAvalia)
+        {
+            case 1:
+                Console.Clear();
+                gurdaAvaliacao += 1;
+                ExibiTitulo();
+                Console.WriteLine($"                                                   Você avaliou com {gurdaAvaliacao}");
+                return;
+
+            case 2:
+                Console.Clear();
+                gurdaAvaliacao += 2;
+                ExibiTitulo();
+                Console.WriteLine($"                                                   Você avaliou com {gurdaAvaliacao}");
+                return;
+
+            case 3:
+                Console.Clear();
+                gurdaAvaliacao += 3;
+                ExibiTitulo();
+                Console.WriteLine($"                                                   Você avaliou com {gurdaAvaliacao}");
+                return;
+
+            case 4:
+                Console.Clear();
+                gurdaAvaliacao += 4;
+                ExibiTitulo();
+                Console.WriteLine($"                                                   Você avaliou com {gurdaAvaliacao}");
+                return;
+
+            case 5:
+                Console.Clear();
+                gurdaAvaliacao += 5;
+                ExibiTitulo();
+                Console.WriteLine($"                                                   Você avaliou com {gurdaAvaliacao}");
+                return;
+
+            default:
+                Console.WriteLine("\n                                                    Opção invalida!\n\n\n");
+                Thread.Sleep(2000);
+                Console.Clear();
+                ExibiTitulo();
+                break;
+
+        }
+    }
+
+}
 
 void Sair()
 {
@@ -197,10 +270,5 @@ void Sair()
     Console.WriteLine($"\n\n                                            Obrigado pela preferencia!\n\n\n\n");
 }
 
-
-void endereco()
-{
-    Console.WriteLine("\n\n                                                             Deu certo");
-}
 
 ExibirOpcoes();
