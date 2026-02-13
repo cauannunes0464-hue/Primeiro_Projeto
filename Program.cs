@@ -120,7 +120,12 @@ void Cardapio_Pedido()
         var escolhido = cardapio1[opcao];
         pedidos.Add(escolhido);
 
+        decimal subtotal = 0;
+        decimal total = 0;        
+        subtotal = pedidos.Sum(item => item.Preco);
+
         bool pergunta = true;
+
         while (pergunta)
         {
             Console.Clear();
@@ -129,7 +134,10 @@ void Cardapio_Pedido()
             foreach (var pedido in pedidos)
             {
                 Console.WriteLine($"                                         {pedido.Nome} - R$ {pedido.Preco:F2}\n");
+                
             }
+
+            Console.WriteLine($"                                                                    Sub Total: {subtotal}");
 
             Console.Write("\n                                        Deseja adicionar mais um item em seu carrinho? ");
             string escolhaSimOuNao = Console.ReadLine()!.Trim().ToLower();                                                       // To.Lower serve para padronizar qualquer tipo de string na entrada para minusculo 
@@ -153,15 +161,19 @@ void Cardapio_Pedido()
                 Console.Clear();
                 ExibirTitulo();
 
+                total = subtotal;
+
                 Console.WriteLine("                                                 Seu carinho: \n");
                 foreach (var pedido in pedidos)
                 {
                     Console.WriteLine($"                                         {pedido.Nome} - R$ {pedido.Preco:F2}\n");
                 }
 
+                Console.WriteLine($"                                                                Total a pagar: {total}");
+
                 Thread.Sleep(500);
                 Console.WriteLine("\n\n                               Estamos te direcionando para etapa de preencimento de endereço...");
-                Thread.Sleep(1500);
+                Thread.Sleep(4000);
                 Endereco();
                 adicionandoItens = false;
                 break;
