@@ -1,23 +1,23 @@
 ﻿// Burger House
-
+using Primeiro_Projeto.Models;
 string mensagem = "\n                                 Boas Vindas a Hamburgueria mais famosa do Brasi!\n";
 
-Dictionary < int, (string Nome,decimal Preco, string Descricao)> cardapio1 = new Dictionary < int, (string, decimal, string) > ()
+Dictionary < int, Produto> cardapio1 = new Dictionary < int, Produto>()
+{ 
 
-{
-    { 1, ("Hambúrguer Clássico ............" ,18.00m, "\nPão, carne, queijo e salada")},
-    { 2, ("Cheeseburger ..................." ,20.00m, " " )},
-    { 3, ("Bacon Burger ..................." ,22.00m, "\nPão, carne, queijo e bacon")},
-    { 4, ("X-Salada ......................." ,21.00m, "\nPão, carne, queijo, alface e tomate")},
-    { 5, ("X-Egg .........................." ,23.00m, "\nPão, carne, queijo e ovo" )},
-    { 6, ("Burger Duplo ..................." ,26.00m, "\nPão, 2 carnes e queijo")},
-    { 7, ("Batata Frita ..................." ,10.00m, " " )},
-    { 8, ("Batata com Cheddar e Bacon ....." ,14.00m, " " )},
-    { 9, ("Refrigerante Lata .............." , 6.00m, " " )},
-    { 10, ("Milk Shake ...................." ,12.00m, " " )}
+    { 1, new Produto("Hambúrguer Clássico ............", 18.00m,"" ) },
+    { 3, new Produto("Bacon Burger ...................", 22.00m, "\nPão, carne, queijo e bacon") },
+    { 4, new Produto("X-Salada .......................", 21.00m, "\nPão, carne, queijo, alface e tomate")},
+    { 5, new Produto("X-Egg ..........................", 23.00m, "\nPão, carne, queijo e ovo")},
+    { 6, new Produto("Burger Duplo ...................", 26.00m, "\nPão, 2 carnes e queijo")},
+    { 7, new Produto("Batata Frita ...................", 10.00m, " ")},
+    { 8, new Produto("Batata com Cheddar e Bacon .....", 14.00m, " ")},
+    { 9, new Produto("Refrigerante Lata ..............", 6.00m, " ")},
+    { 10, new Produto("Milk Shake ....................", 12.00m, " ")},
+
 };
 
-List<(string Nome, decimal Preco, string Descricao)> pedidos = new List<(string Nome, decimal Preco, string Descricao)>();
+List<Produto> pedidos = new List<Produto>();
 
 
 void ExibirTitulo()
@@ -117,7 +117,7 @@ void Cardapio_Pedido()
             continue;
         }
 
-        var escolhido = cardapio1[opcao];
+        Produto escolhido = cardapio1[indice];
         pedidos.Add(escolhido);
 
         decimal subtotal = 0;
