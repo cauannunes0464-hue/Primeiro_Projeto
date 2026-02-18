@@ -135,7 +135,7 @@ void Cardapio_Pedido()
 
             pedido.MostrarResumo();
 
-            Console.WriteLine($"                                                                    Sub Total: {subtotal}");
+            Console.WriteLine($"\n                                                                    Sub Total: {subtotal}");
 
             Console.Write("\n                                        Deseja adicionar mais um item em seu carrinho? ");
             string escolhaSimOuNao = Console.ReadLine()!.Trim().ToLower();                                                       // To.Lower serve para padronizar qualquer tipo de string na entrada para minusculo 
@@ -192,14 +192,18 @@ void Endereco()
     Thread.Sleep(100);
     ExibirTitulo();
 
-    Console.Write("\n\n                                Endereço: ");
-    string entradaEndereco = Console.ReadLine()!;
+    Console.Write("\n\n                               Rua: ");
+    string rua = Console.ReadLine()!;
 
     Console.Write("                                Número: ");
     string numero = Console.ReadLine()!;
 
     Console.Write("                                Bairro: ");
-    string entradaBairro= Console.ReadLine()!;
+    string bairro= Console.ReadLine()!;
+
+
+
+    Endereco endereco = new Endereco(rua, numero, bairro );
 
     Thread.Sleep(1000);
     Pagamento();

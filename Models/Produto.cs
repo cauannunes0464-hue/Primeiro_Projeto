@@ -24,5 +24,10 @@ namespace Primeiro_Projeto.Models
             Descricao = descricao;
 
         }
+
+        public void MostrarProduto()
+        {
+            Console.WriteLine($"                                           {Nome} R$ {Preco:F2}");
+        }
     }
 }
