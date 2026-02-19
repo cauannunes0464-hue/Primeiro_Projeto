@@ -20,7 +20,6 @@ namespace Primeiro_Projeto.Models
             Cidade = cidade;
             Cep = cep;
         }
-
         public void MostrarEndereço ()
         {
             Console.WriteLine("Endereço da entrega:\n");

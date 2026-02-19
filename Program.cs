@@ -1,5 +1,10 @@
 ﻿// Burger House
 using Primeiro_Projeto.Models;
+using System.Reflection.Metadata;
+using System.Runtime.ConstrainedExecution;
+using System.Security.Cryptography;
+using System.Threading.Channels;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 string mensagem = "\n                                 Boas Vindas a Hamburgueria mais famosa do Brasi!\n";
 
@@ -22,7 +27,7 @@ Dictionary < int, Produto> cardapio1 = new Dictionary < int, Produto>()
 Pedido pedido = new Pedido();
 
 
-void ExibirTitulo()
+void ExibirLogo()
 {
     Console.WriteLine(@"             
          
@@ -43,7 +48,7 @@ void ExibirOpcoes()
 
     while (true)
     {
-        ExibirTitulo();
+        ExibirLogo();
         Console.WriteLine(mensagem);
         Console.WriteLine("                                           Digite 1 para fazer pedido");
         Console.WriteLine("                                           Digite 2 para avaliar loja");
@@ -92,7 +97,7 @@ void Cardapio_Pedido()
     {
         Thread.Sleep(200);
         Console.Clear();
-        ExibirTitulo();
+        ExibirLogo();
         Thread.Sleep(200);
 
         foreach (var item in cardapio1)
@@ -131,7 +136,7 @@ void Cardapio_Pedido()
         while (pergunta)
         {
             Console.Clear();
-            ExibirTitulo();
+            ExibirLogo();
 
             pedido.MostrarResumo();
 
@@ -157,7 +162,7 @@ void Cardapio_Pedido()
             {
                 Thread.Sleep(1500);
                 Console.Clear();
-                ExibirTitulo();
+                ExibirLogo();
 
                 total = subtotal;
 
@@ -189,8 +194,7 @@ void Cardapio_Pedido()
 void Endereco()
 {
     Console.Clear();
-    Thread.Sleep(100);
-    ExibirTitulo();
+    ExibirLogo();
 
     Console.Write("\n\n                               Rua: ");
     string rua = Console.ReadLine()!;
@@ -199,11 +203,39 @@ void Endereco()
     string numero = Console.ReadLine()!;
 
     Console.Write("                                Bairro: ");
-    string bairro= Console.ReadLine()!;
+    string bairro = Console.ReadLine()!;
 
+    Console.Write("                                Cidade: ");
+    string cidade = Console.ReadLine()!;
 
+    Console.Write("                                   CEP: ");
+    string cep = Console.ReadLine()!;
 
-    Endereco endereco = new Endereco(rua, numero, bairro );
+    Endereco endereco = new Endereco(rua, numero, bairro, cidade, cep );
+
+    Thread.Sleep(1000);
+    DadosCliente();
+    
+}
+
+void DadosCliente()
+{
+    Console.Clear();
+    Thread.Sleep(100);
+    ExibirLogo();
+
+    Console.WriteLine("                              Insira seus dados:\n");
+
+    Console.Write("                          Nome: ");
+    string nome = Console.ReadLine()!;
+
+    Console.Write("                      Telefone: ");
+    string telefone = Console.ReadLine()!;
+
+    Console.Write("                         Email: ");
+    string email = Console.ReadLine()!;
+
+    Cliente cliente = new Cliente(nome, telefone, email);
 
     Thread.Sleep(1000);
     Pagamento();
@@ -213,7 +245,8 @@ void Pagamento()
 {
     Console.Clear();
     Thread.Sleep(100);
-    ExibirTitulo();
+    ExibirLogo();
+  
 
     int opcaoEcolhidaNumericPaga;
 
@@ -232,14 +265,14 @@ void Pagamento()
             Console.WriteLine("\n                                                    Opção invalida!\n\n\n");
             Thread.Sleep(2000);
             Console.Clear();
-            ExibirTitulo();
+            ExibirLogo();
             continue;
         }
         switch (opcaoEcolhidaNumericPaga)
         {
             case 1:
                 Console.Clear();
-                ExibirTitulo();
+                ExibirLogo();
                 
                 Console.WriteLine("                                          Oba! Seu pedido esta sendo preparado\n");
                 Thread.Sleep(1000);
@@ -249,7 +282,7 @@ void Pagamento()
 
             case 2:
                 Console.Clear();
-                ExibirTitulo();
+                ExibirLogo();
 
                 Console.WriteLine("                                          Oba! Seu pedido esta sendo preparado\n");
                 Thread.Sleep(1000);
@@ -259,7 +292,7 @@ void Pagamento()
 
             case 3:
                 Console.Clear();
-                ExibirTitulo();
+                ExibirLogo();
 
                 Console.WriteLine("                                          Oba! Seu pedido esta sendo preparado\n");
                 Thread.Sleep(1000);
@@ -269,14 +302,14 @@ void Pagamento()
 
             case 4:
                 Console.Clear();
-                ExibirTitulo();
+                ExibirLogo();
 
                 Console.Write("                                                       Troco para: ");
                 string troco = Console.ReadLine()!;
                 Thread.Sleep(1000);
                 Console.Clear();
 
-                ExibirTitulo();
+                ExibirLogo();
                 Console.WriteLine("                                           Oba! Seu pedido esta sendo preparado\n");
                 Thread.Sleep(1000);
                 Console.WriteLine("                           Tempo de esperas é de 35 a 45 minutos, Obrigado pela preferencia!\n");
@@ -287,7 +320,7 @@ void Pagamento()
                 Console.WriteLine("\n                                                    Opção invalida!\n\n\n");
                 Thread.Sleep(2000);
                 Console.Clear();
-                ExibirTitulo();
+                ExibirLogo();
                 break;
         }
     }
@@ -302,7 +335,7 @@ void Avaliar()
     while (true)
     {
         Console.Clear();
-        ExibirTitulo();
+        ExibirLogo();
         Console.WriteLine("                                  Como você considera sua experiencia com o sistema?\n");
 
         Console.WriteLine("                                                        1- Ruim");
@@ -317,7 +350,7 @@ void Avaliar()
             Console.WriteLine("\n                                                    Opção invalida!\n\n\n");
             Thread.Sleep(2000);
             Console.Clear();
-            ExibirTitulo();
+            ExibirLogo();
             continue;
         }
 
@@ -326,35 +359,35 @@ void Avaliar()
             case 1:
                 Console.Clear();
                 gurdaAvaliacao += 1;
-                ExibirTitulo();
+                ExibirLogo();
                 Console.WriteLine($"                                                   Você avaliou com {gurdaAvaliacao}");
                 return;
 
             case 2:
                 Console.Clear();
                 gurdaAvaliacao += 2;
-                ExibirTitulo();
+                ExibirLogo();
                 Console.WriteLine($"                                                   Você avaliou com {gurdaAvaliacao}");
                 return;
 
             case 3:
                 Console.Clear();
                 gurdaAvaliacao += 3;
-                ExibirTitulo();
+                ExibirLogo();
                 Console.WriteLine($"                                                   Você avaliou com {gurdaAvaliacao}");
                 return;
 
             case 4:
                 Console.Clear();
                 gurdaAvaliacao += 4;
-                ExibirTitulo();
+                ExibirLogo();
                 Console.WriteLine($"                                                   Você avaliou com {gurdaAvaliacao}");
                 return;
 
             case 5:
                 Console.Clear();
                 gurdaAvaliacao += 5;
-                ExibirTitulo();
+                ExibirLogo();
                 Console.WriteLine($"                                                   Você avaliou com {gurdaAvaliacao}");
                 return;
 
@@ -362,7 +395,7 @@ void Avaliar()
                 Console.WriteLine("\n                                                    Opção invalida!\n\n\n");
                 Thread.Sleep(2000);
                 Console.Clear();
-                ExibirTitulo();
+                ExibirLogo();
                 break;
         }
     }
@@ -372,7 +405,7 @@ void Avaliar()
 void Sair()
 {
     Console.Clear();
-    ExibirTitulo();
+    ExibirLogo();
     Thread.Sleep(500);
     Console.WriteLine($"\n\n                                            Obrigado pela preferencia!\n\n\n\n");
 }

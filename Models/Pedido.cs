@@ -20,12 +20,9 @@ namespace Primeiro_Projeto.Models
                 return this.produtos.AsReadOnly();  // AsReadOnly() cria uma versão protegida da lista. Não permite ex: pedido.produto.Add(produto);
             }
         }
-        public Pedido(Cliente cliente, Endereco endereco)
+        public Pedido()
         {
             this.produtos = new List<Produto>();
-            Cliente = cliente;
-            Endereco = endereco;
-
         }
 
         public void AdicionarProduto(Produto produto)
