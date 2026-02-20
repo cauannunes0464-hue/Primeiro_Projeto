@@ -27,9 +27,13 @@ namespace Primeiro_Projeto.Services
             };
         }
 
-        public Dictionary<int, Produto> ObterCardapio()
+        public void ObterCardapio()
         {
-            return _cardapio;
+            foreach (var item in _cardapio)
+            {
+                Console.WriteLine($"                                       {item.Key} - {item.Value.Nome} - R$ {item.Value.Preco:F2}\n");
+            }
+
         }
 
         public bool TentarObterProduto(int codigo, out Produto produto)
