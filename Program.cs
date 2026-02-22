@@ -5,7 +5,7 @@ using Primeiro_Projeto.UI;
 
 namespace Primeiro_Projeto
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {

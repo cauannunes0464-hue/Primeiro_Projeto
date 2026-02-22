@@ -20,9 +20,9 @@ namespace Primeiro_Projeto.Models
 
         public void Mostrar()
         {
-            Console.WriteLine($"Cliente: {Nome}");
-            Console.WriteLine($"Telefone: {Telefone}");
-            Console.WriteLine($"Email: {Email}");
+            Console.WriteLine($"                                                      Cliente: {Nome}");
+            Console.WriteLine($"                                                     Telefone: {Telefone}");
+            Console.WriteLine($"                                                        Email: {Email}");
         }
 
     }

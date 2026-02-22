@@ -22,7 +22,7 @@ namespace Primeiro_Projeto.Services
                 { 7, new Produto("Batata Frita ...................", 10.00m, " ")},
                 { 8, new Produto("Batata com Cheddar e Bacon .....", 14.00m, " ")},
                 { 9, new Produto("Refrigerante Lata ..............",  6.00m, " ")},
-                { 10, new Produto("Milk Shake ....................", 12.00m, " ")},
+                { 10,new Produto("Milk Shake .....................", 12.00m, " ")},
 
             };
         }
@@ -31,7 +31,7 @@ namespace Primeiro_Projeto.Services
         {
             foreach (var item in _cardapio)
             {
-                Console.WriteLine($"                                       {item.Key} - {item.Value.Nome} - R$ {item.Value.Preco:F2}\n");
+                Console.WriteLine($"                                         {item.Key} - {item.Value.Nome} - R$ {item.Value.Preco:F2}\n");
             }
 
         }

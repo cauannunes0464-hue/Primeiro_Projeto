@@ -27,7 +27,7 @@ namespace Primeiro_Projeto.Models
 
         public void MostrarProduto()
         {
-            Console.WriteLine($"                                           {Nome} R$ {Preco:F2}");
+            Console.WriteLine($"                                            {Nome} R$ {Preco:F2}");
         }
     }
 }

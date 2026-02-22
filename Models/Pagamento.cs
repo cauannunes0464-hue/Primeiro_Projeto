@@ -22,18 +22,17 @@ namespace Primeiro_Projeto.Models
             {
                 return Valor - totalPedido;
             }
-
             return 0;
         }
 
         public void Mostrar(decimal totalPedido)
         {
-            Console.WriteLine($"Forma de Pagamento: {Forma}");
-            Console.WriteLine($"Valor pago: R$ {Valor:F2}");
+            Console.WriteLine($"                                                   Forma de Pagamento: {Forma}\n");
+            Console.WriteLine($"                                                   Valor pago: R$ {Valor:F2}\n");
 
             if ( Forma.ToLower() == "dinheiro")
             {
-                Console.WriteLine($"Troco: R$V{CalcularTroco(totalPedido):F2}");
+                Console.WriteLine($"                                                   Troco: R${CalcularTroco(totalPedido):F2}");
             }
 
         }

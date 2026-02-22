@@ -22,9 +22,9 @@ namespace Primeiro_Projeto.Models
         }
         public void MostrarEndereço ()
         {
-            Console.WriteLine("Endereço da entrega:\n");
-            Console.WriteLine($"{Rua}, {Numero} - {Bairro}");
-            Console.WriteLine($"{Cidade}, CEP: {Cep}");
+            Console.WriteLine("                                                      Endereço da entrega:\n");
+            Console.WriteLine($"                                           {Rua}, {Numero} - {Bairro}");
+            Console.WriteLine($"                                                    {Cidade}, CEP: {Cep}");
         }
     }
 }

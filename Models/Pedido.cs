@@ -20,9 +20,18 @@ namespace Primeiro_Projeto.Models
                 return this.produtos.AsReadOnly();  // AsReadOnly() cria uma versão protegida da lista. Não permite ex: pedido.produto.Add(produto);
             }
         }
-        public Pedido()
+        public Pedido (Cliente cliente)
         {
-            this.produtos = new List<Produto>();
+            Cliente = cliente;
+            this.produtos = new List<Produto>();  
+        }
+        public void DefinirEndereco(Endereco endereco)
+        {
+            Endereco = endereco;
+        }
+        public void DefinirPagamento(Pagamento pagamento)
+        {
+            Pagamento = pagamento;
         }
 
         public void AdicionarProduto(Produto produto)
@@ -51,10 +60,10 @@ namespace Primeiro_Projeto.Models
 
             // Console.WriteLine($"                                                      \nTotal: R$ {CalcularTotal():F2}");
         }
-
+    
         public void MostrarResumoCompleto()
         {
-            Console.WriteLine("              ========= RESUMO DO PEDIDO =========");
+            Console.WriteLine("                                              ========= RESUMO DO PEDIDO =========\n");
 
             Cliente.Mostrar();
             Console.WriteLine();
@@ -62,12 +71,13 @@ namespace Primeiro_Projeto.Models
             Endereco.MostrarEndereço();
             Console.WriteLine();
 
-            Console.WriteLine("              Produtos: ");
+            Console.WriteLine("                                                           Produtos: \n");
             foreach (var produto in this.produtos)
             {
-                Console.WriteLine($"                                         {produto.Nome} - R$ {produto.Preco:F2}\n");
+                Console.WriteLine($"                                            {produto.Nome} - R$ {produto.Preco:F2}\n");
             }
-            Console.WriteLine($"\nTotal: R$ {CalcularTotal():F2}\n");
+
+            Console.WriteLine($"                                                                        Total: R$ {CalcularTotal():F2}\n");
 
             if (Pagamento != null)
             {
@@ -75,7 +85,11 @@ namespace Primeiro_Projeto.Models
             }
 
         }
+        public override string ToString()
+        {
+            return $"\n                                                  Cliente: {Cliente.Nome} | Total: R$ {CalcularTotal():F2}";
 
+        }
     }
 
 }
