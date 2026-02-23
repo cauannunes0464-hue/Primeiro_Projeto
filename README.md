@@ -1,5 +1,9 @@
 # 🍔 Sistema de Hamburgueria
 
+![C#](https://img.shields.io/badge/C%23-.NET-512BD4?logo=dotnet)
+![POO](https://img.shields.io/badge/Paradigma-POO-blue)
+![Status](https://img.shields.io/badge/status-Finalizado-brightgreen)
+
 **Sistema de pedidos para uma hamburgueria desenvolvido em C# com foco em Programação Orientada a Objetos (POO) e organização em camadas (Models, Services e UI).**
 
 ---
