@@ -1,72 +1,125 @@
-# Hi 👋, I'm Cauan Lopes
+# 🍔 Sistema de Hamburgueria
 
-🎓 **Student of Systems Analysis and Development**
-
-💻 Passionate about software development, logic, and problem solvingI build 
+**Sistema de pedidos para uma hamburgueria desenvolvido em C# com foco em Programação Orientada a Objetos (POO) e organização em camadas (Models, Services e UI).**
 
 ---
-## 👨‍💻 About Me
-I'm currently in the **3rd semester of Systems Analysis and Development**, building practical projects to strengthen my skills in programming and software development.
+## 📌 Sobre o Projeto
 
-I enjoy learning by doing — creating systems, testing ideas, and understanding how things work behind the scenes.  
-My current focus is on **C#, Python, and application logic**, with interest in backend development and databases.
+Este projeto simula o funcionamento de uma hamburgueria, permitindo:
+
+- Cadastro de cliente
+- Associação de endereço
+- Criação de pedidos
+- Adição de produtos ao pedido
+- Escolha de forma de pagamento
+- Cálculo automático do total
+- Listagem de pedidos criados
+
+O sistema é executado via Console Application.
 
 ---
-## 🌐 Where to find me
+## Estrutura do Projeto
 
-<p align="left">
-  <a href="https://github.com/cauannunes0464-hue">
-    <img src="https://img.shields.io/badge/GitHub-Cauan_Nunes_Lopes-181717?style=for-the-badge&logo=github" />
-  </a>
+📁 Models
+   
+   └── Cliente.cs
+   
+   └── Endereco.cs
+
+   └── Pagamento.cs
+
+   └── Pedido.cs
+
+   └── Produto.cs
+
+📁 Services
+
+   └── PedidoServices.cs
+
+   └── ProdutoServices.cs
+
+📁 UI
+
+   └── Menu.cs
+
+📄 Program.cs
+
+---
+
+## 🧠 Arquitetura Utilizada
+
+O projeto foi dividido em camadas para melhor organização:
+
+ ## 📦 Models
+
+Contém as entidades do sistema:
+
+- Cliente
+- Endereço
+- Pedido
+- Produto
+- Pagamento
+
+## ⚙ Services
+
+Responsável pelas regras de negócio:
+
+- Criação de pedidos
+- Listagem de pedidos
+- Gerenciamento de produtos
+
+## 🖥 UI
+
+Responsável pela interação com o usuário:
+
+- Menu principal
+- Exibição de opções
+- Entrada de dados
+
+## ▶ Program
+Ponto de entrada da aplicação.
+
+---
+
+## 🛠 Tecnologias Utilizadas
+
+- C#
+- .NET
+- Console Application
+- Visual Studio
   
-</p>
+---
+
+## 🧠 Conceitos Aplicados
+
+- Programação Orientada a Objetos
+- Encapsulamento
+- Propriedades (get / set)
+- Sobrescrita de ToString()
+- List<T>
+- Dictionary<TKey, TValue>
+- Separação de responsabilidades
+- Validação de entrada com while
 
 ---
-## Concepts:
-  - Programming Logic  
-  - Algorithms  
-  - Data Structures (basic)  
-  - Software Engineering (Agile / Kanban)
 
+## 🚀 Como Executar
+
+Clone o repositório:
+
+- git clone LINK_DO_SEU_REPOSITORIO
+
+- Abra no Visual Studio
+
+- Execute com Ctrl + F5
+  
 ---
-## 🚀 Technologies & Tools
 
-## Languages: 
+## 🎯 Objetivo
 
-<p align="center">
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" width="60"/>
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" width="60"/>
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" width="60"/>
-</p>
+Praticar conceitos fundamentais de POO e organização de código, simulando um sistema real de pedidos.
 
-## Tools & Platforms:
-<p align="center">
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original.svg" width="50"/>
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="50"/>
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visualstudio/visualstudio-plain.svg" width="50"/>
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" width="50"/>
-</p>
+👨‍💻 Autor
 
-
----
-## 📌 Current Projects
-
-- 🍔 **Hamburgueria System (C# Console App)**  
-  A menu-based ordering system that allows users to view products and place orders.
-
-- 📚 **Academic Projects (ADS)**  
-  Projects developed during college focusing on logic, system modeling, and software development fundamentals.
-
----
-## 🎯 Goals
-
-- Improve my skills in **backend development**
-- Learn more about **databases and system architecture**
-- Gain professional experience through **internships or junior opportunities**
-- Build a solid portfolio with real-world projects
-
----
-## 🚀 Philosophy
-
-> _"Code is not just about solving problems.  
-> It's about building solutions that scale, last, and generate real value."_
+Cauan Nunes
+Estudante de Análise e Desenvolvimento de Sistemas
