@@ -21,17 +21,25 @@ O sistema é executado via Console Application.
 ## Estrutura do Projeto
 
 📁 Models
-   ├── Cliente.cs
-   ├── Endereco.cs
-   ├── Pagamento.cs
-   ├── Pedido.cs
+   
+   └── Cliente.cs
+   
+   └── Endereco.cs
+
+   └── Pagamento.cs
+
+   └── Pedido.cs
+
    └── Produto.cs
 
 📁 Services
-   ├── PedidoServices.cs
+
+   └── PedidoServices.cs
+
    └── ProdutoServices.cs
 
 📁 UI
+
    └── Menu.cs
 
 📄 Program.cs
