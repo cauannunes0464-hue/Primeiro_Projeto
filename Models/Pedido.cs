@@ -55,13 +55,11 @@ namespace Primeiro_Projeto.Models
             foreach (var produto in this.produtos)
             {
                 produto.MostrarProduto();
-               // Console.WriteLine($"                                         {produto.Nome} - R$ {produto.Preco:F2}\n");
             }
 
-            // Console.WriteLine($"                                                      \nTotal: R$ {CalcularTotal():F2}");
         }
     
-        public void MostrarResumoCompleto()
+        public string GerarResumoCompleto()
         {
             Console.WriteLine("                                              ========= RESUMO DO PEDIDO =========\n");
 
