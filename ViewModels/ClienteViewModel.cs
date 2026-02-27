@@ -7,10 +7,9 @@ using Primeiro_Projeto.ViewModels;
 namespace Primeiro_Projeto.ViewModel
 {
 
-    public class ClienteViewModel : ViewModelBase
+    public class ClienteViewModel : ViewModelBase   
     {
-        public ObservableCollection<Cliente> Clientes { get; set; }
-
+        public ObservableCollection<Cliente> Clientes { get; set; } 
 
         private string _nome;
         public string Nome
@@ -19,7 +18,7 @@ namespace Primeiro_Projeto.ViewModel
             set
             {
                 _nome = value;
-                OnPropertyChanged(nameof(Nome));
+                OnPropertyChanged(nameof(Nome)); 
             }
         }
 
@@ -47,19 +46,22 @@ namespace Primeiro_Projeto.ViewModel
         }
 
    
-        public ICommand AdicionarClienteCommand { get; }
+        public ICommand AdicionarClienteCommand { get; }  //
 
         public ClienteViewModel()
         {
             Clientes = new ObservableCollection<Cliente>();
 
-            AdicionarClienteCommand = new RelayCommand(AdicionarCliente);
+            AdicionarClienteCommand = new RelayCommand(
+                AdicionarCliente,
+                PodeAdicionarCliente
+                );
         }
 
 
         private void AdicionarCliente()
         {
-            if (!string.IsNullOrWhiteSpace(Nome))
+            if (!string.IsNullOrWhiteSpace(Nome))  
             {
                 Clientes.Add(new Cliente( Nome,Telefone , Email ));
 
@@ -68,6 +70,10 @@ namespace Primeiro_Projeto.ViewModel
                 Email = string.Empty;
                 
             }
+        }
+        private bool PodeAdicionarCliente() ///
+        {
+            return !string.IsNullOrWhiteSpace(Nome);
         }
     }
 }

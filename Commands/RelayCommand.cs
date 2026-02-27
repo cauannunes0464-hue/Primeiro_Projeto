@@ -3,13 +3,12 @@
 namespace Primeiro_Projeto.ViewModels
 {
 
-               // Procurar explicação desse Codigo!!!!!!
-
+    // Estudar Delegate    
 
     public class RelayCommand : ICommand
     {
         private readonly Action _execute;
-        private readonly Func<bool>? _canExecute;
+        private readonly Func<bool>? _canExecute;  // Estudar para que seve ( ? )
 
         public event EventHandler? CanExecuteChanged;
 
